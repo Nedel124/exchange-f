@@ -8,6 +8,8 @@ import {FORM_PROVIDERS} from 'angular2/common';
 import {RouterActive} from './directives/router-active';
 import {Home} from './home/home';
 import {Dashboard} from './dashboard/dashboard';
+import {Wallet} from './wallet/wallet';
+import {PaymentService } from './services/payment/payment';
 
 /*
  * App Component
@@ -15,7 +17,7 @@ import {Dashboard} from './dashboard/dashboard';
  */
 @Component({
   selector: 'app',
-  providers: [ ...FORM_PROVIDERS ],
+  providers: [ ...FORM_PROVIDERS, PaymentService ],
   directives: [ ...ROUTER_DIRECTIVES, RouterActive ],
   pipes: [],
   styles: [`
@@ -46,6 +48,9 @@ import {Dashboard} from './dashboard/dashboard';
           </li>
           <li router-active>
             <a [routerLink]=" ['About'] ">About</a>
+          </li>      
+          <li router-active>
+            <a [routerLink]=" ['Wallet'] ">Wallet</a>
           </li>          
           <li router-active>
             <a [routerLink]=" ['Dashboard'] ">Dashboard</a>
@@ -70,6 +75,7 @@ import {Dashboard} from './dashboard/dashboard';
   { path: '/', component: Home, name: 'Index' },
   { path: '/home', component: Home, name: 'Home' },
   { path: '/dashboard', component: Dashboard, name: 'Dashboard' },
+  { path: '/wallet', component: Wallet, name: 'Wallet' },
   // Async load a component using Webpack's require with es6-promise-loader
   { path: '/about', loader: () => require('./about/about')('About'), name: 'About' },
   { path: '/**', redirectTo: ['Index'] }

@@ -1,0 +1,25 @@
+<h3>Dodaj</h3>
+
+<div class="form-group">
+  <select class="form-control" required>
+    <option *ngFor="#p of powers" [value]="p">{{p}}</option>
+  </select>
+</div>
+<form (submit)="onSubmit()">
+  <input type="text" [(ngModel)] = "payment.name">
+  <input type="text" [(ngModel)] = "payment.amount">
+  <button>click</button>
+</form>
+
+
+
+<h3>Lista operacji</h3>
+<div class="grid grid-pad">
+	<div *ngFor="#payment of payments" class="col-1-4" >
+		<div class="module payment">
+			<h4>{{payment.name}}</h4>
+            <h4>{{payment.status}}</h4>
+            <h4>{{payment.amount}}</h4>
+		</div>
+	</div>
+</div>
